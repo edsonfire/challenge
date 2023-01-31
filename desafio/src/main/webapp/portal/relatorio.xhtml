@@ -1,0 +1,229 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="template.xhtml">
+                
+                
+   
+		<ui:define name="ptitle">
+	
+		</ui:define>
+		
+			<ui:define name="isource">
+		  <h:outputScript name="js/charts/amcharts.js" library="sentinel-layout" />
+        <h:outputScript name="js/charts/pie.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/serial.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/export.min.js" library="sentinel-layout" />
+              <h:outputScript name="js/charts/plugins/export/export.config.default.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/themes/light.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/FileSaver.js/FileSaver.min.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/jszip/jszip.min.js" library="sentinel-layout" />
+		 <h:outputScript name="js/charts/plugins/export/lang/pt.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/fabric.js/fabric.min.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/xlsx/xlsx.min.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/pdfmake/pdfmake.min.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/pdfmake/vfs_fonts.js" library="sentinel-layout" />
+         <h:outputScript name="js/mascara.js" library="sentinel-layout" />
+		<style>
+		.tbtext{
+		font-size: 9px;
+		}
+		
+		</style>
+		        <script type="text/javascript">
+
+        var chart;
+        
+        var legend;
+
+        var chartData = #{dash.graficoPizza};
+        
+         
+
+        AmCharts.ready(function () {
+    		if(chartData.length==0){
+				var elem = document.getElementById('chartdiv');
+
+				elem.style.display='none';
+			}
+
+
+          geraPizza();
+       
+
+
+	
+          
+        });
+
+
+
+        
+
+		function geraPizza(){
+
+			  // PIE CHART
+            chart = new AmCharts.AmPieChart();
+            chart.dataProvider = chartData;
+            chart.titleField = "Cood";
+            chart.valueField = "Total";
+            chart.gradientRatio = [0, 0, 0 ,-0.2, -0.4];
+            chart.gradientType = "radial";
+
+            // LEGEND
+            legend = new AmCharts.AmLegend();
+            legend.align = "center";
+            legend.markerType = "circle";
+            chart.balloonText = "[[title]] <br/> <span><b>[[value]]</b> ([[percents]]%) </span>";
+            chart.addLegend(legend);
+            chart.labelRadius = -30;
+            chart.labelText = "[[percents]]%";
+          
+            //3D
+            
+              chart.depth3D = 10;
+                chart.angle = 10;
+
+            
+            // WRITE
+            chart.write("chartdiv");
+
+			}
+        
+
+
+
+        
+
+        function updateGraficos() {
+        	AmCharts.handleLoad();
+        	 
+		}
+        
+            
+        </script>
+      
+        
+
+        
+		</ui:define>
+
+
+    <ui:define name="content">
+        
+        <h:form id="fprinc">
+        
+         <div class="row"  style="#{loginBeanPortal.displayRel==true?'':'display:none'}">
+            <div class="col-md-12">
+              <div class="card">
+              
+                <div class="card-body">
+                  <h5 class="card-title">UST´s por Coordenação</h5>
+        
+        <p:dataTable value="#{dash.relatorios}" var="rel" styleClass="tbtext">
+        	<p:column headerText="Coordenação" styleClass="tbtext">
+        			<h:outputText value="#{rel.coordenacao.descricao}" ></h:outputText>
+        	
+        	</p:column>
+        	<p:column headerText="Jan"  styleClass="tbtext">
+        			<h:outputText value="#{rel.jan}" ></h:outputText>
+        	
+        	</p:column>
+        	<p:column headerText="Fev" styleClass="tbtext">
+        			<h:outputText value="#{rel.fev}"  ></h:outputText>
+        	
+        	</p:column>
+        	
+        	<p:column headerText="Mar"  styleClass="tbtext">
+        			<h:outputText value="#{rel.mar}" ></h:outputText>
+        	
+        	</p:column>
+        	
+        	<p:column headerText="Abr" styleClass="tbtext">
+        			<h:outputText value="#{rel.abr}"  ></h:outputText>
+        	
+        	</p:column>
+        	<p:column headerText="Mai"  styleClass="tbtext">
+        			<h:outputText value="#{rel.mai}" ></h:outputText>
+        	
+        	</p:column>
+        	<p:column headerText="Jun" styleClass="tbtext">
+        			<h:outputText value="#{rel.jun}"  ></h:outputText>
+        	
+        	</p:column>
+        	<p:column headerText="Jul" styleClass="tbtext">
+        			<h:outputText value="#{rel.jul}"  ></h:outputText>
+        	
+        	</p:column>
+        	<p:column headerText="Ago" styleClass="tbtext">
+        			<h:outputText value="#{rel.ago}"  ></h:outputText>
+        	
+        	</p:column>
+        	<p:column headerText="Set" styleClass="tbtext">
+        			<h:outputText value="#{rel.set}"  ></h:outputText>
+        	
+        	</p:column>
+        	<p:column headerText="Out" styleClass="tbtext">
+        			<h:outputText value="#{rel.out}"  ></h:outputText>
+        	
+        	</p:column>
+        	<p:column headerText="Nov" styleClass="tbtext">
+        			<h:outputText value="#{rel.nov}"  ></h:outputText>
+        	
+        	</p:column>
+        	
+        	<p:column headerText="Dez" styleClass="tbtext">
+        			<h:outputText value="#{rel.dez}"  ></h:outputText>
+        	
+        	</p:column>
+        	<p:column headerText="Total" styleClass="tbtext">
+        			<h:outputText value="#{rel.total}"  ></h:outputText>
+        	
+        	</p:column>
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        
+        </p:dataTable>
+        </div>
+        
+
+</div>
+</div></div>
+
+
+ <div class="row" style="#{loginBeanPortal.displayRel==true?'':'display:none'}">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Gráfico UST´s por Coordenação</h5>
+             
+        <div id="chartdiv" style="width: 100%; height: 400px;"></div>
+
+
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+             
+               <!-- outro grafico , ex. ust x mes -->
+
+
+
+
+              
+            </div>
+          </div>
+        
+        </h:form>
+    </ui:define>
+
+</ui:composition>

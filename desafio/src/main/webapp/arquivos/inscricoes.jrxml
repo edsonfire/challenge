@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inscricoes" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e36778e6-6019-457e-90c2-467d0a2e880b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="marido" class="java.lang.String"/>
+	<field name="esposa" class="java.lang.String"/>
+	<field name="telefone_res" class="java.lang.String"/>
+	<field name="telefone_com" class="java.lang.String"/>
+	<field name="telefone_cel" class="java.lang.String"/>
+	<field name="telefone_outros" class="java.lang.String"/>
+	<field name="endereco" class="java.lang.String"/>
+	<field name="cidade" class="java.lang.String"/>
+	<field name="igreja" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="59932d1d-9082-4ae7-a873-dc561895749f" x="0" y="6" width="182" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="acf08905-81a5-46ac-8108-222d02f4d39a" x="182" y="6" width="188" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="00acecd8-6b58-41f3-ba29-83410ac1fb6a" x="370" y="6" width="111" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9da38996-5389-4e71-aaa1-3ff5c576fa63" x="481" y="6" width="208" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="91ddd66d-f5de-456a-8425-2d266f89699f" x="689" y="6" width="113" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="bb788085-586b-4b95-81f7-e4b83de96260" x="8" y="7" width="100" height="18"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1b52006a-c94a-4860-9b85-d894ada0d40e" x="186" y="8" width="100" height="18"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Esposa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f871e414-f718-4b39-8a5f-76bea1faa890" x="381" y="7" width="100" height="18"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6ef89f57-3d88-41f6-a1c9-266639e93cbb" x="496" y="7" width="100" height="18"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Endereço]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b0d9e8a7-8b05-4b04-8047-8348a13161da" x="702" y="8" width="100" height="18"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Igreja]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="053fbc22-0d0c-4ce5-aba7-6a2c67a47186" x="0" y="0" width="182" height="20" backcolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="819af4f3-3315-4850-87ce-1e1d61725c76" x="689" y="0" width="113" height="20" backcolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8dc8c138-966e-4392-9243-f781a15b603a" x="481" y="0" width="208" height="20" backcolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="24dd513d-84fc-48c8-8b05-e6d22b42a250" x="182" y="0" width="188" height="20" backcolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="cddb003b-75d7-412a-870d-cba35a81d5df" x="370" y="0" width="111" height="20" backcolor="#FFFFFF"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="9bd57377-6630-4a28-85ca-711cb892a235" x="8" y="1" width="163" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3d6b49e6-e69e-4f0e-82cf-b957f54d59a8" x="186" y="1" width="184" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{esposa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="030a6920-d905-4011-ab0d-95055594ac01" x="381" y="1" width="100" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefone_res} +" - "+$F{telefone_com}+" - "+$F{telefone_cel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="04ead7cd-3d00-4575-9cfa-1121dba5d03f" x="496" y="1" width="193" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ed7e5662-4ed4-45f7-a758-be9cfa9fd290" x="694" y="0" width="100" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{igreja}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

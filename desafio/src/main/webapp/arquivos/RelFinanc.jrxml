@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ficha" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dc411c80-0527-43ec-890d-7eb9d389d38d">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1185"/>
+	<parameter name="LOGO" class="java.lang.String"/>
+	<parameter name="topo" class="java.lang.String"/>
+	<parameter name="CAMINHOSUB" class="java.lang.String"/>
+	<parameter name="CAMINHOSUB_D" class="java.lang.String"/>
+	<parameter name="CAMINHOSUB_LIB" class="java.lang.String"/>
+	<parameter name="CAMINHOSUB_S" class="java.lang.String"/>
+	<parameter name="stopo" class="java.lang.String"/>
+	<field name="ano" class="java.lang.Integer"/>
+	<field name="mes" class="java.lang.Integer"/>
+	<field name="debitos" class="java.util.List"/>
+	<field name="creditos" class="java.util.List"/>
+	<field name="igreja" class="br.com.adsanta.financeiro.modelo.Igreja"/>
+	<field name="creditos_lib" class="java.util.List"/>
+	<field name="saldos" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="139" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="571" height="106" uuid="83a92156-a374-4c26-b3a4-8ed26592bffb"/>
+				<imageExpression><![CDATA[$P{topo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="337" y="85" width="68" height="20" uuid="d6f5657a-4d77-4810-b87d-12153a7b0f10"/>
+				<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="85" width="48" height="20" uuid="19f84516-dfb7-41b6-9e49-58277d76183e"/>
+				<textFieldExpression><![CDATA[$F{ano}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="85" width="174" height="20" uuid="c13e35e4-47cf-42f1-ab57-9eb28f005f4b"/>
+				<textFieldExpression><![CDATA[$F{igreja}.getNome()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="172" y="111" width="232" height="21" uuid="038a7600-4db4-4d45-8ccb-f7f1c86bc045"/>
+				<imageExpression><![CDATA[$P{stopo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="393" splitType="Stretch">
+			<subreport>
+				<reportElement x="5" y="1" width="200" height="23" uuid="a97392c0-d17d-481b-8224-0f84687c4180"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{creditos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{CAMINHOSUB}]]></subreportExpression>
+			</subreport>
+			<rectangle>
+				<reportElement positionType="Float" x="18" y="114" width="264" height="82" forecolor="#0959A5" uuid="9d942d11-8522-4294-bf4a-75c34b26033b"/>
+			</rectangle>
+			<subreport>
+				<reportElement positionType="Float" x="5" y="55" width="200" height="20" uuid="aa6b373c-04cd-4e70-975f-50747d203ad2"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{debitos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{CAMINHOSUB_D}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="5" y="83" width="200" height="22" uuid="4288b983-3dee-4e93-bcfd-260050e4956c"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{saldos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{CAMINHOSUB_S}]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement positionType="Float" x="19" y="132" width="264" height="1" forecolor="#0959A5" uuid="857659e6-8972-4897-a94e-2d0c708bf937"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="110" y="116" width="76" height="20" forecolor="#0959A5" uuid="a1986015-103f-4ddc-9fda-11b166f4dc79"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ASSINATURAS]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="57" y="146" width="198" height="1" forecolor="#0959A5" uuid="f1ffebca-023c-4d5f-a8e1-2762d97fe688"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="18" y="161" width="264" height="1" forecolor="#0959A5" uuid="9b3a6361-172e-4995-826a-16bb571ffa0b"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="132" y="184" width="40" height="11" forecolor="#0959A5" uuid="276e0106-8be8-47f3-9f3d-9f276184f45d"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[DIRIGENTE]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="45" y="181" width="198" height="1" forecolor="#0959A5" uuid="d525f67a-788e-4b7e-98d9-c388440310ad"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="55" y="278" width="198" height="1" forecolor="#0959A5" uuid="31eba6ad-11f4-42a9-96de-20c68df3385f"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="123" y="282" width="54" height="11" forecolor="#0959A5" uuid="f944cf3d-83dd-4395-8108-382ef1043b5a"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[DIRIGENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="126" y="247" width="54" height="11" forecolor="#0959A5" uuid="18f73766-10bd-44e7-9649-569434b21bdb"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[TESOUREIRO]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="44" y="229" width="228" height="1" forecolor="#0959A5" uuid="11733eb4-0175-49d5-8198-9f0b25245d88"/>
+			</line>
+			<rectangle>
+				<reportElement positionType="Float" x="19" y="211" width="264" height="99" forecolor="#0959A5" uuid="b2860aef-9b2d-4029-bcab-b36b2cd63c1d"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="105" y="213" width="108" height="20" forecolor="#0959A5" uuid="f175dadc-6161-4642-b3cb-8671798243be"/>
+				<text><![CDATA[COMISSÃO FISCAL]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="19" y="233" width="264" height="1" forecolor="#0959A5" uuid="94daa2af-711c-43ec-92eb-2dd63da97784"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="20" y="260" width="264" height="1" forecolor="#0959A5" uuid="a35bcf00-6a06-48e6-9334-edf3c12a0af6"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="18" y="284" width="264" height="1" forecolor="#0959A5" uuid="037b7bec-c7ae-4d69-8279-cdc3cece6a22"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="22" y="237" width="100" height="20" forecolor="#0959A5" uuid="83a1ad58-e873-41b3-970d-501d467906c0"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[1º MEMBRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="22" y="262" width="100" height="20" forecolor="#0959A5" uuid="6e394b98-d96f-477c-a8f1-3c47492a49f5"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[2º MEMBRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="288" width="100" height="20" forecolor="#0959A5" uuid="a9bc549d-cfef-4d4c-9280-35874b7800c8"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[3º MEMBRO]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="12" y="32" width="179" height="15" forecolor="#0959A5" uuid="d44369a3-4246-4740-baff-d83e01be90d0"/>
+				<textFieldExpression><![CDATA["( * ) LIBERADO DA PORCENTAGEM"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="21" y="315" width="261" height="28" forecolor="#06418F" uuid="f290c522-402e-423d-87cf-34b241f15ba6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="22" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Recebemos"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="87" y="340" width="136" height="20" forecolor="#0959A5" uuid="a576f785-b156-47c4-8b4c-75116db9bac7"/>
+				<text><![CDATA[___ / ____________ /______]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="65" y="360" width="182" height="20" forecolor="#0959A5" uuid="cc41ec2b-c548-49b0-92b7-53f4c4b0803a"/>
+				<text><![CDATA[___________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="102" y="373" width="100" height="15" forecolor="#0959A5" uuid="cb50b362-df65-47bd-a55a-95bd6d72d26c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[TESOURARIA GERAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="130" y="147" width="40" height="11" forecolor="#0959A5" uuid="57d881ad-fd5d-43b4-b12c-f0aa75beab6f"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[TESOUREIRO]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="19" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="0" width="532" height="16" forecolor="#0959A5" uuid="06f00b9b-e9c9-40b6-935e-a80630b20179"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[OBS.: Sr. tesoureiro colabore com o nosso trabalho, entregar até o 2º Domingo . SAL. 90.12]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,246 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="template.xhtml">
+
+
+
+	<ui:define name="ptitle">
+
+	</ui:define>
+
+
+	<ui:define name="content">
+
+		<h:form id="fprinc">
+
+
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title m-b-0">Solicitação UST</h5>
+
+					<div class="row">
+						<div class="col-md-3">
+
+							<div class="form-group m-t-20">
+								<label>Mês/Ano </label>
+								<h:selectOneMenu styleClass="select2 form-control custom-select"
+									value="#{soliciacaoBean.mesanoSelected}"
+									converter="mesanoConverter">
+									<f:selectItem itemLabel="Selecione" itemValue="" />
+									<f:selectItems value="#{soliciacaoBean.mesAnos}" var="m"
+										itemValue="#{m}" itemLabel="#{m.descricao}"></f:selectItems>
+									<p:ajax event="change" listener="#{soliciacaoBean.selecionaMesAno}" update="fprinc"></p:ajax>
+								</h:selectOneMenu>
+
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group m-t-20">
+								<label>Coordenação</label>
+
+								<h:selectOneMenu styleClass="select2 form-control custom-select"
+									value="#{soliciacaoBean.coordenacaoSelected}"
+									converter="coordenacaoConverter"
+									disabled="#{soliciacaoBean.solicitacao.mesano.id > 0?false:true}">
+									<f:selectItem itemLabel="Selecione" itemValue="" />
+									<f:selectItems value="#{soliciacaoBean.coords}" var="c"
+										itemValue="#{c}" itemLabel="#{c.descricao}"></f:selectItems>
+									<p:ajax event="change"
+										listener="#{soliciacaoBean.buscaMacrocelulas}" update="cmc"></p:ajax>
+								</h:selectOneMenu>
+
+							</div>
+
+
+
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group m-t-20">
+								<label>Macrocélula</label>
+								<h:selectOneMenu id="cmc"
+									styleClass="select2 form-control custom-select"
+									value="#{soliciacaoBean.macrocelula}"
+									converter="macroCelulaConverter"
+									disabled="#{soliciacaoBean.solicitacao.mesano.id > 0?false:true}">
+									<f:selectItem itemLabel="Selecione" itemValue="" />
+									<f:selectItems value="#{soliciacaoBean.macros}" var="mc"
+										itemValue="#{mc}" itemLabel="#{mc.descricao}"></f:selectItems>
+									<p:ajax event="change"
+										listener="#{soliciacaoBean.buscaCelulas}" update="cce"></p:ajax>
+								</h:selectOneMenu>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group m-t-20">
+								<label>Célula</label>
+								<h:selectOneMenu styleClass="select2 form-control custom-select"
+									id="cce" value="#{soliciacaoBean.celula}"
+									converter="celulaConverter"
+									disabled="#{soliciacaoBean.solicitacao.mesano.id > 0?false:true}">
+									<f:selectItem itemLabel="Selecione" itemValue="" />
+									<f:selectItems value="#{soliciacaoBean.celulas}" var="ce"
+										itemValue="#{ce}" itemLabel="#{ce.descricao}"></f:selectItems>
+									<p:ajax event="change"
+										listener="#{soliciacaoBean.buscaAtividades}" update="fprinc"></p:ajax>
+								</h:selectOneMenu>
+
+							</div>
+						</div>
+
+
+
+
+
+
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group m-t-20">
+								<label>Atividade</label>
+
+
+								<h:selectOneMenu styleClass="select2 form-control custom-select"
+									id="cat" value="#{soliciacaoBean.atividadeSelected}"
+									converter="atividadeConverter"
+									disabled="#{soliciacaoBean.solicitacao.mesano.id > 0?false:true}">
+									<f:selectItem itemLabel="Selecione" itemValue="" />
+									<f:selectItems value="#{soliciacaoBean.atividades}" var="att"
+										itemValue="#{att}" itemLabel="#{att.descricao}"></f:selectItems>
+									<p:ajax event="change" listener="#{soliciacaoBean.selecionaAtividade}" update="fprinc"></p:ajax>
+								</h:selectOneMenu>
+							</div>
+						</div>
+
+						<div class="col-md-9">
+							<div class="form-group m-t-20">
+								<label>Descrição</label>
+
+								<h:inputTextarea id="atd" readonly="true"
+									styleClass="select2 form-control custom-select"
+									style="height: 300px;"
+									value="#{soliciacaoBean.atividadeSelected.detalhamento}"></h:inputTextarea>
+
+							</div>
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+						<label>Complexidade</label>
+						
+						<h:selectOneMenu styleClass="select2 form-control custom-select"
+									value="#{soliciacaoBean.solicitacao.complexidade}">
+									<f:selectItem itemLabel="Baixa" itemValue="B" />
+										<f:selectItem itemLabel="Média" itemValue="M" />
+											<f:selectItem itemLabel="Alta" itemValue="A" />
+									
+								</h:selectOneMenu>
+						
+						</div>
+						
+						<div class="col-md-3">
+						<label>Fator de ponderação</label>
+						<h:inputText styleClass="form-control" value="#{soliciacaoBean.solicitacao.fatorPonderacao}"></h:inputText>
+						</div>
+						
+						<div class="col-md-3">
+						<label>Esforço (horas)</label>
+						<h:inputText styleClass="form-control" value="#{soliciacaoBean.solicitacao.esforco}"></h:inputText>
+						</div>
+					</div>
+					<div class="row">
+					
+					    <div class="col-md-3">
+						<label>Simultaneidade</label>
+						<h:inputText styleClass="form-control" value="#{soliciacaoBean.solicitacao.simultaneidade}"></h:inputText>
+						</div>
+						
+						<div class="col-md-3">
+						<label>Dias Úteis</label>
+						<h:inputText styleClass="form-control" value="#{soliciacaoBean.solicitacao.diasUteis}"></h:inputText>
+						</div>
+						
+						<div class="col-md-3">
+						<label>Dias Não Úteis</label>
+						<h:inputText styleClass="form-control" value="#{soliciacaoBean.solicitacao.diaNuteis}"></h:inputText>
+						</div>
+					
+					</div>
+
+					<div class="row" style="padding-bottom: 30px; padding-top: 30px">
+					<p:commandButton style="width:150px"  value="INCLUIR" action="#{soliciacaoBean.addSolicitacao}" update="fprinc" disabled="#{soliciacaoBean.solicitacao.atividade.id>0?false:true}"></p:commandButton>
+					</div>
+					
+					<div class="row">
+					
+					<p:dataTable value="#{soliciacaoBean.solicitacoes}" var="sol" emptyMessage="">
+							<p:column headerText="Mês/Ano" >
+								<h:outputText value="#{sol.mesano.descricao}"></h:outputText>
+							</p:column>
+							<p:column headerText="Coordenação">
+							<h:outputText value="#{sol.atividade.celula.macrocelula.coordenacao.descricao}"></h:outputText>
+							</p:column>
+							<p:column headerText="Macrocélula">
+							<h:outputText value="#{sol.atividade.celula.macrocelula.descricao}"></h:outputText>
+							</p:column>
+							
+							<p:column headerText="Célula">
+							<h:outputText value="#{sol.atividade.celula.descricao}"></h:outputText>
+							</p:column>
+							
+							<p:column headerText="Atividade">
+							<h:outputText value="#{sol.atividade.descricao}"></h:outputText>
+							</p:column>
+							
+							<p:column headerText="UST">
+							<h:outputText value="#{sol.usts}"></h:outputText>
+							</p:column>
+							
+					
+					</p:dataTable>
+					
+					</div>
+					
+					<div class="row">
+					
+					<div class="col-md-9">
+						<span style="font-size: 30px;">TOTAL UST´S:	<h:outputText value="#{soliciacaoBean.totalust}"><f:convertNumber maxFractionDigits="2"></f:convertNumber> </h:outputText></span>
+					</div>
+				    <div class="col-md-3">
+					<p:commandButton  onclick="PF('dSav').show()"  value="SALVAR"></p:commandButton>
+					
+					</div>
+					</div>
+				</div>
+
+			</div>
+
+
+
+		</h:form>
+		
+		
+		
+				<p:dialog  id="dsav" widgetVar="dSav" width="500px">
+					<h:form id="frec">
+						
+						<h:panelGrid columns="1" style="width:100%">
+								Confirma a solicitação?
+						</h:panelGrid>
+						
+						<h:panelGrid columns="2" style="width:100%">
+							<p:commandButton value="Confirmar" action="#{soliciacaoBean.salvaSolicitacao()}" ajax="false" oncomplete="PF('dRec').hide()"></p:commandButton>
+							<p:commandButton value="Fechar"   onclick="PF('dSav').hide()"></p:commandButton>
+						</h:panelGrid>
+						
+					</h:form>
+			</p:dialog>
+			
+	</ui:define>
+
+</ui:composition>

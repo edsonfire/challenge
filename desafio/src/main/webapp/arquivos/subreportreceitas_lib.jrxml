@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreportreceitas" pageWidth="320" pageHeight="842" columnWidth="300" leftMargin="10" rightMargin="10" topMargin="0" bottomMargin="0" uuid="daef653a-49a4-44c5-a0c5-ea8fe49c5e54">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="conta" class="br.com.adsanta.financeiro.modelo.Conta_lancamento"/>
+	<field name="valor" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<rectangle>
+				<reportElement x="206" y="-1" width="61" height="18" forecolor="#3333FF" uuid="28d8e60b-5307-4d78-8e2a-6f6602412a52"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="-1" width="58" height="18" forecolor="#3333FF" uuid="f5f75726-b537-432e-a7d0-76be01a07600"/>
+			</rectangle>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="206" y="2" width="61" height="14" uuid="92c72ce4-d8c7-4581-9b30-67f2d083ea6a">
+					<printWhenExpression><![CDATA[$F{valor}>0]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="3" width="57" height="13" uuid="a94c1d2e-4366-44bc-968b-476b62e1e854"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta}.getNr_conta()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="58" y="-1" width="148" height="18" forecolor="#3333FF" uuid="fb76b327-0cc2-48ad-9c5c-60a8ccaec9b3"/>
+			</rectangle>
+			<textField>
+				<reportElement x="59" y="3" width="147" height="13" uuid="9f054264-fedb-4971-a31d-1762716eb96e"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta}.getDescricao()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

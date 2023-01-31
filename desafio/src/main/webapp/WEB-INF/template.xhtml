@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>Gestor Financeiro</title>
+      <h:outputScript name="js/layout.js" library="sentinel-layout" />
+        <h:outputScript name="js/charts/amcharts.js" library="sentinel-layout" />
+        <h:outputScript name="js/charts/pie.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/serial.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/export.min.js" library="sentinel-layout" />
+              <h:outputScript name="js/charts/plugins/export/export.config.default.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/themes/light.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/FileSaver.js/FileSaver.min.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/jszip/jszip.min.js" library="sentinel-layout" />
+		 <h:outputScript name="js/charts/plugins/export/lang/pt.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/fabric.js/fabric.min.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/xlsx/xlsx.min.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/pdfmake/pdfmake.min.js" library="sentinel-layout" />
+         <h:outputScript name="js/charts/plugins/export/libs/pdfmake/vfs_fonts.js" library="sentinel-layout" />
+         <h:outputScript name="js/mascara.js" library="sentinel-layout" />
+      
+      <style type="text/css">
+fieldset {
+
+    margin:2em auto;
+
+    border:1px solid;
+    border-radius:5px;
+    padding:10px;
+    position:relative;
+}
+legend {
+    font-weight:bold;
+    position:absolute;
+    left:10px;
+    top:-1.1em;
+    height:2em;
+    line-height:2em;
+    padding:0 10px;
+}
+legend:after {
+    position:absolute;
+    content:" ";
+    height:3px;
+    left:0;
+    right:0;
+    top:49%;
+    background:#fff;
+}
+legend b {
+    position:relative;
+    z-index:2;
+}
+</style>
+      
+        <ui:insert name="head" />
+    </h:head>
+
+    <h:body>        
+        <ui:include src="topbar.xhtml" />
+
+        <ui:include src="leftmenu.xhtml" />
+
+        <div id="layout-portlets-cover" class="fontRegular">
+            <ui:insert name="content">
+               Template
+            </ui:insert>
+            
+            <ui:include src="footer.xhtml" />
+        </div>
+        
+        <p:ajaxStatus style="width:32px; height:32px; position:fixed; right:12px; bottom:10px">
+            <f:facet name="start">
+                <p:graphicImage name="images/preloader.gif" library="sentinel-layout"/>
+            </f:facet>
+
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+
+        <h:outputStylesheet name="css/font-icon-layout.css" library="sentinel-layout" />
+        <h:outputStylesheet name="css/sentinel-layout.css" library="sentinel-layout" />
+        <h:outputStylesheet name="css/core-layout.css" library="sentinel-layout" />
+        <h:outputStylesheet name="css/adsanta.css" library="sentinel-layout" />
+          <h:outputStylesheet name="js/charts/plugins/export/export.css" library="sentinel-layout" />
+          
+          
+          
+          
+    <script src="../js/sweetalert2.all.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+<script src="../js/promise-polyfill.js"></script>
+    </h:body>
+
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inscricoescps" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="01d89531-45cc-49dd-b847-1be7e8c55afd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CAMINHOSUB" class="java.lang.String"/>
+	<parameter name="TOPO" class="java.lang.String"/>
+	<field name="inscricoes" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d7dd283e-7fed-431e-a112-8351f9edc86c" x="258" y="87" width="301" height="31"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Inscrições Casados para Sempre ]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="b73b982f-e2b6-47da-bdbc-89569e26d926" x="0" y="0" width="802" height="95"/>
+				<imageExpression><![CDATA[$P{TOPO}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="f69eb1cf-7e47-42d0-8ff5-757561703df4" x="16" y="13" width="705" height="100"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{inscricoes})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{CAMINHOSUB}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="a1d03f6c-7d63-4559-ad2b-f5476ccb84ad" x="508" y="11" width="128" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Total de Inscritos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b7303f52-096c-4048-81c5-1c6f505f4338" x="638" y="12" width="100" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{inscricoes}.size()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

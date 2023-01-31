@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreportreceitas" pageWidth="320" pageHeight="842" columnWidth="300" leftMargin="10" rightMargin="10" topMargin="0" bottomMargin="0" uuid="daef653a-49a4-44c5-a0c5-ea8fe49c5e54">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="conta" class="br.com.adsanta.financeiro.modelo.Conta_lancamento"/>
+	<field name="valor" class="java.lang.Double"/>
+	<variable name="valor_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="267" height="14" forecolor="#0959A5" uuid="d7152c59-159f-4edd-a325-e9f4d243fdae"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="14" width="58" height="20" forecolor="#0959A5" uuid="01a672f8-fd68-49df-a88a-6a4facafe103"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="58" y="14" width="148" height="20" forecolor="#0959A5" uuid="e3e29c80-0ebc-4dde-8dd9-8c3391b75b24"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="206" y="14" width="61" height="20" forecolor="#0959A5" uuid="3736b4bb-1654-4798-a3f4-b326e5f911a2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="101" y="0" width="76" height="14" forecolor="#0959A5" uuid="f16a6356-ae5a-4c3b-a943-d590c75c0fb2"/>
+				<textElement>
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[2 -DESPESAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="15" width="55" height="19" forecolor="#0959A5" uuid="2a0f775a-e463-4362-90b8-07e9f932acfb"/>
+				<text><![CDATA[CONTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="15" width="66" height="19" forecolor="#0959A5" uuid="6940bcf6-48b3-4cfe-b47d-7ccabe70c668"/>
+				<text><![CDATA[DESCRIÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="217" y="15" width="39" height="19" forecolor="#0959A5" uuid="cc4e237d-551c-4ffe-8bc4-0c03b47a53c6"/>
+				<text><![CDATA[VALOR]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<rectangle>
+				<reportElement x="206" y="-1" width="61" height="14" forecolor="#0959A5" uuid="28d8e60b-5307-4d78-8e2a-6f6602412a52"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="-1" width="58" height="14" forecolor="#0959A5" uuid="f5f75726-b537-432e-a7d0-76be01a07600"/>
+			</rectangle>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="206" y="-1" width="61" height="14" uuid="92c72ce4-d8c7-4581-9b30-67f2d083ea6a">
+					<printWhenExpression><![CDATA[$F{valor}>0]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="0" width="57" height="13" forecolor="#0959A5" uuid="a94c1d2e-4366-44bc-968b-476b62e1e854"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta}.getNr_conta()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="58" y="-1" width="148" height="14" forecolor="#0959A5" uuid="fb76b327-0cc2-48ad-9c5c-60a8ccaec9b3"/>
+			</rectangle>
+			<textField>
+				<reportElement x="59" y="0" width="147" height="13" forecolor="#0959A5" uuid="9f054264-fedb-4971-a31d-1762716eb96e"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta}.getDescricao()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="17" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="206" height="16" forecolor="#0959A5" uuid="8f7ef00b-a705-48e2-b8ef-d867417264bf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="206" y="0" width="61" height="16" forecolor="#0959A5" uuid="1e0e2208-c2cb-43a1-adb1-79555be2a8c3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="82" y="0" width="123" height="15" forecolor="#0959A5" uuid="a612d1fb-648e-4d7b-bf41-df143f1709a4"/>
+				<textElement>
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE DESPESAS]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="206" y="0" width="61" height="16" isPrintInFirstWholeBand="true" forecolor="#01020A" uuid="8d4cef51-d300-4118-8c36-485cea617daf"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{valor_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
